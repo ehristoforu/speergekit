@@ -1,0 +1,18 @@
+# This YAML configuration demonstrates a simple weighted average of two models.
+# It assigns a weight of 0.5 to each model, effectively averaging their parameters.
+
+models:
+  - model: "path/to/your/first/model"
+    # No parameters needed for the first model in a linear merge
+    
+  - model: "path/to/your/second/model"
+    # No parameters needed for the second model
+
+merge_method: linear
+base_model: "path/to/your/first/model"
+
+parameters:
+  weights:
+    - 0.5
+    - 0.5
+dtype: float16

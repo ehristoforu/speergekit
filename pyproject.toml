@@ -1,0 +1,15 @@
+[project]
+name = "speergekit"
+version = "0.1.0"
+dependencies = [
+    "torch",
+    "transformers",
+    "safetensors",
+    "pydantic",
+    "pyyaml",
+    "tqdm",
+    "click",
+]
+
+[project.scripts]
+speergekit = "speergekit.scripts.merge_raw_pytorch:main"

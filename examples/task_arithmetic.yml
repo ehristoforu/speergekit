@@ -1,0 +1,18 @@
+# This YAML configuration demonstrates a task arithmetic merge.
+# It subtracts the parameters of one model from another, scaled by a coefficient,
+# and adds the result to a base model.
+
+# The base model that was finetuned
+base_model: "path/to/base_model.pth"
+models:
+  # The finetuned version of the base model
+  - model: "path/to/finetuned_model.pth"
+  # The target model to which the task vector will be added
+  - model: "path/to/target_model.pth"
+
+merge_method: task_arithmetic
+
+parameters:
+  # The coefficient to scale the difference of the models
+  scaling_factor: 0.5
+dtype: float16
