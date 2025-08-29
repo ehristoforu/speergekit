@@ -3,12 +3,13 @@
 # and adds the result to a base model.
 
 # The base model that was finetuned
-base_model: "path/to/base_model.pth"
+# This can be a local path or a HuggingFace repository ID
+base_model: "openai/whisper-tiny"
 models:
   # The finetuned version of the base model
-  - model: "path/to/finetuned_model.pth"
+  - model: "openai/whisper-base"
   # The target model to which the task vector will be added
-  - model: "path/to/target_model.pth"
+  - model: "openai/whisper-tiny"
 
 merge_method: task_arithmetic
 

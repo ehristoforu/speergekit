@@ -14,7 +14,7 @@ import safetensors.torch
 import torch
 from torch import Tensor
 
-from speergekit.io.loader import TensorLoader
+from speergekit.io.loader import TensorLoader, load_model
 
 
 @dataclass
@@ -42,6 +42,22 @@ class ShardedTensorIndex:
         Creates a ShardedTensorIndex from a model on disk.
         """
         model_path = None
+        if not os.path.exists(base_path):
+            # Not a local path, try to download
+            try:
+                model_path = hf_hub_download(
+                    repo_id=base_path, filename="model.safetensors"
+                )
+            except (HfHubHTTPError, EntryNotFoundError):
+                try:
+                    model_path = hf_hub_download(
+                        repo_id=base_path, filename="pytorch_model.bin"
+                    )
+                except (HfHubHTTPError, EntryNotFoundError):
+                    # It might be a sharded model, so just let it pass
+                    pass
+            if model_path:
+                base_path = os.path.dirname(model_path)
         for model_file_name in [
             "model.safetensors",
             "pytorch_model.bin",
@@ -195,16 +211,16 @@ class LazyTensorLoader:
 
     @classmethod
     def from_disk(
-        cls, base_path: str, lazy_unpickle: bool = True
+        cls, model_path: str, lazy_unpickle: bool = True
     ) -> "LazyTensorLoader":
         """
-        Creates a LazyTensorLoader from a model on disk.
+        Creates a LazyTensorLoader from a model on disk or from the HuggingFace Hub.
 
         Args:
-            base_path: The path to the model.
+            model_path: The path to the model or a repo ID.
             lazy_unpickle: Whether to use lazy unpickling.
 
         Returns:
             A new instance of the LazyTensorLoader class.
         """
-        return LazyTensorLoader(ShardedTensorIndex.from_disk(base_path), lazy_unpickle)
+        return LazyTensorLoader(ShardedTensorIndex.from_disk(model_path), lazy_unpickle)

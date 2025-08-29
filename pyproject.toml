@@ -9,6 +9,7 @@ dependencies = [
     "pyyaml",
     "tqdm",
     "click",
+    "huggingface_hub",
 ]
 
 [project.scripts]

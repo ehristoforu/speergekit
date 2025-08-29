@@ -26,7 +26,7 @@ This will merge the models according to your configuration and save the resultin
 
 The YAML configuration file has the following structure:
 
--   `models`: A list of models to merge. Each model is specified by its path.
+-   `models`: A list of models to merge. Each model can be specified by a local path or a HuggingFace repository ID (e.g., `openai/whisper-tiny`).
 -   `base_model`: The model to use as the base for the merge.
 -   `merge_method`: The merge method to use. Currently, `linear` and `task_arithmetic` are supported.
 -   `parameters`: A dictionary of parameters for the merge method.

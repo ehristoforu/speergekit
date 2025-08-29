@@ -2,14 +2,15 @@
 # It assigns a weight of 0.5 to each model, effectively averaging their parameters.
 
 models:
-  - model: "path/to/your/first/model"
+  # This can be a local path or a HuggingFace repository ID
+  - model: "openai/whisper-tiny"
     # No parameters needed for the first model in a linear merge
     
-  - model: "path/to/your/second/model"
+  - model: "openai/whisper-base"
     # No parameters needed for the second model
 
 merge_method: linear
-base_model: "path/to/your/first/model"
+base_model: "openai/whisper-tiny"
 
 parameters:
   weights:
