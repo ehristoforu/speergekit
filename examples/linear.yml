@@ -8,12 +8,9 @@ models:
     
   - model: "openai/whisper-base"
     # No parameters needed for the second model
+  - model: "openai/whisper-small"
 
 merge_method: linear
 base_model: "openai/whisper-tiny"
 
-parameters:
-  weights:
-    - 0.5
-    - 0.5
 dtype: float16
