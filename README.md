@@ -1,13 +1,13 @@
 # speergekit
 
-This is a library for merging pretrained TTS models. It is a refactor of the original `speergekit` with a more powerful and flexible YAML-based configuration system, inspired by `mergekit-llm`.
+This is a library for merging pretrained speech models (TTS & ASR). It is a refactor of the original `speergekit` with a more powerful and flexible YAML-based configuration system, inspired by [`mergekit`](https://github.com/arcee-ai/mergekit).
 
 ## Installation
 
 To install the library, clone the repository and install it in editable mode:
 
 ```bash
-git clone https://github.com/your-username/speergekit.git
+git clone https://github.com/ehristoforu/speergekit.git
 cd speergekit
 pip install -e .
 ```
