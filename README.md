@@ -1,6 +1,6 @@
 # speergekit
 
-This is a library for merging pretrained TTS models. It is a refactor of the original `speergekit` with a more powerful and flexible YAML-based configuration system, inspired by [`mergekit`](https://github.com/arcee-ai/mergekit).
+This is a library for merging pretrained speech models (TTS & ASR). It is a refactor of the original `speergekit` with a more powerful and flexible YAML-based configuration system, inspired by [`mergekit`](https://github.com/arcee-ai/mergekit).
 
 ## Installation
 
